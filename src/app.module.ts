@@ -4,16 +4,15 @@ import {SequelizeModule} from "@nestjs/sequelize";
 import {UsersModule} from "./users/users.module";
 import {ConfigModule} from "@nestjs/config";
 import {User} from "./users/users.model";
-import { RolesService } from './roles/roles.service';
-import { RolesController } from './roles/roles.controller';
 import { RolesModule } from './roles/roles.module';
 import {Roles} from "./roles/roles.model";
 import {UserRoles} from "./roles/user-roles.model";
+import { AuthModule } from './auth/auth.module';
 
 // По факу здесь все регаем, там контроллеры и тд
 @Module({ // Это дикаратор, это обертка, которая добавляет классу/функции новый функционал
-    controllers: [RolesController],
-    providers: [RolesService], // Здесь логика
+    controllers: [],
+    providers: [], // Здесь логика
     imports: [
         ConfigModule.forRoot({
             envFilePath: `.${process.env.NODE_ENV}.env`
@@ -29,7 +28,8 @@ import {UserRoles} from "./roles/user-roles.model";
             autoLoadModels : true
         }),
         UsersModule,
-        RolesModule
+        RolesModule,
+        AuthModule,
     ]
 })
 export class AppModule{

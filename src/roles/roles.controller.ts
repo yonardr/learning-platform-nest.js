@@ -15,4 +15,5 @@ export class RolesController {
     async getByValue(@Param('value') value: string){
         return this.roleService.getRoleByValue(value)
     }
+
 }
